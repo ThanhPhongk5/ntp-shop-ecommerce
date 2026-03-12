@@ -5,37 +5,37 @@ The system allows users to browse products, add items to cart, and provides an a
 
 ## Tech Stack
 
-Backend
+### Backend
 - Java
 - Spring Boot
 - Spring Data JPA
 - MySQL
 
-Frontend
+### Frontend
 - HTML
 - CSS
 - JavaScript
 
-Tools
+### Tools
 - Git
 - Maven
 
 ## Features
 
-User
+### User
 - View product list
 - View product details
 - Add products to cart
 
-Admin
+### Admin
 - Create, update, delete products
 - Upload product images
 - Manage product information
 
-Backend
+### Backend
 - RESTful API with Spring Boot
-- CRUD operations
+- CRUD operations for products, users, orders
 - Image upload and static resource handling
-- Layered architecture (Controller, Service, Repository)
+- Layered architecture (Controller – Service – Repository)
 
 ## Project Structure
