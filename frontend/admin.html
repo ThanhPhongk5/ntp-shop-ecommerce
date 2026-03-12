@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>NTP Shop <span style="font-size: 0.8rem; color: #64748b;">(Quản trị)</span></h1>
+        <nav>
+            <a href="index.html">Quay lại Shop</a>
+            <a href="admin.html" class="active">Thêm sản phẩm</a>
+        </nav>
+    </header>
+
+    <main>
+        <div
+            style="max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow);">
+            <h2>Thêm sản phẩm mới vào kho</h2>
+            <form id="product-form">
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom:5px;">Tên sản phẩm:</label>
+                    <input type="text" id="name" placeholder="Ví dụ: Laptop Gaming" required
+                        style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;">
+                </div>
+
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                    <div style="flex: 1;">
+                        <label style="display:block; margin-bottom:5px;">Giá bán (VNĐ):</label>
+                        <input type="number" id="price" placeholder="500000" required
+                            style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display:block; margin-bottom:5px;">Số lượng:</label>
+                        <input type="number" id="stock" placeholder="10" required
+                            style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom:5px;">Hình ảnh sản phẩm:</label>
+                    <input type="file" id="productImage" accept="image/*"
+                        style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display:block; margin-bottom:5px;">Mô tả sản phẩm:</label>
+                    <textarea id="description" rows="4" placeholder="Nhập chi tiết sản phẩm..."
+                        style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-family: inherit;"></textarea>
+                </div>
+
+                <button type="submit" class="btn-add" style="width: 100%; padding: 12px; font-size: 1rem;">Lưu vào hệ
+                    thống</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+
+        document.getElementById('product-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+
+            const productData = {
+                name: document.getElementById('name').value,
+                price: parseFloat(document.getElementById('price').value),
+                stock: parseInt(document.getElementById('stock').value),
+                description: document.getElementById('description').value
+            };
+            const fileInput = document.getElementById('productImage');
+            const file = fileInput.files.length > 0 ? fileInput.files[0] : null;
+
+            await createProduct(productData, file);
+        });
+    </script>
+</body>
+
+</html>
